@@ -1,5 +1,8 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -12,6 +15,10 @@ import org.springframework.context.annotation.FilterType;
 )   //basePakages와 basePakageClasses를 지정하지 않으면 hello.core 하위 폴더를 다 검색.
 public class AutoAppConfig {
 
+    @Bean(name = "memoryMemberRepository")
+    public MemberRepository memberReposiotry() {
+        return new MemoryMemberRepository();
+    }
 }
 /**
  * 컴포넌트 스캔의 용도 뿐만 아니라 다음 애노테이션이 있으면 스프링은 부가 기능을 수행한ㄷ.
