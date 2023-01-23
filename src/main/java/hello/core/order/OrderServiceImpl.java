@@ -16,19 +16,22 @@ public class OrderServiceImpl implements OrderService {
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     //DIP를 지키기 위해 위 두개를 주석 쳐리
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+
+    // * final을 사용하여 생성자에 값이 누락될경우 컴파일 오류를 뿌려준다.
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
 
-    @Autowired
-    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     // * set사용할려면 final을 제외
 //    @Autowired
